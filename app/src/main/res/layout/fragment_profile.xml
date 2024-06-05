@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Имя и фамилия -->
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Имя Фамилия"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Номер телефона -->
+    <TextView
+        android:id="@+id/text_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Номер телефона"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/text_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Кнопки -->
+    <Button
+        android:id="@+id/button_my_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Мои заказы"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/button_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Корзина"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:layout_marginTop="16dp"/>
+
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Строка с кнопкой "Вернуться в профиль" и кнопкой "Регистрация" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Кнопка "Вернуться в профиль" -->
+        <Button
+            android:id="@+id/button_back_to_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Назад в профиль"
+            android:layout_gravity="center_vertical"/>
+
+
+        <!-- Пространство между кнопками -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Кнопка "Регистрация" -->
+        <Button
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Регистрация"
+            android:textColor="@android:color/holo_blue_dark"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <!-- Поле для ввода логина -->
+    <EditText
+        android:id="@+id/edit_text_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Логин"
+        android:inputType="text"/>
+
+    <!-- Поле для ввода пароля -->
+    <EditText
+        android:id="@+id/edit_text_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Пароль"
+        android:inputType="textPassword"/>
+
+    <!-- Кнопка "Войти" -->
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
