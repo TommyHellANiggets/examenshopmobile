@@ -1,10 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.Examenshopmobile" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/myStatusBarColor</item>
+        <item name="android:navigationBarColor">@color/myNavigationBarColor</item>
+        <item name="colorPrimary">@color/myPrimaryColor</item>
+        <item name="colorPrimaryDark">@color/myPrimaryDarkColor</item>
+        <item name="colorAccent">@color/myAccentColor</item>
+        <item name="android:textColor">@color/myTextColor</item>
+        <item name="android:background">@color/myBackgroundColor</item>
+        <item name="android:buttonStyle">@style/MyButtonStyle</item>
     </style>
 
     <style name="Theme.Examenshopmobile" parent="Base.Theme.Examenshopmobile" />
+
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@color/myButtonBackgroundColor</item>
+        <item name="android:textColor">@color/myButtonTextColor</item>
+    </style>
 </resources>

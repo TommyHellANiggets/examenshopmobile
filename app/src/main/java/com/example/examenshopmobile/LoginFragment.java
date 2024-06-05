@@ -20,22 +20,18 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        // Находим элементы управления в макете
         editTextUsername = view.findViewById(R.id.edit_text_username);
         editTextPassword = view.findViewById(R.id.edit_text_password);
         buttonLogin = view.findViewById(R.id.button_login);
         buttonBackToProfile = view.findViewById(R.id.button_back_to_profile);
         buttonRegister = view.findViewById(R.id.button_register);
 
-        // Устанавливаем обработчик для кнопки "Войти"
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Здесь будет обработка нажатия кнопки "Войти"
             }
         });
 
-        // Устанавливаем обработчик для кнопки "Вернуться в профиль"
         buttonBackToProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,11 +43,9 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        // Устанавливаем обработчик для кнопки "Регистрация"
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход на страницу регистрации
                 Fragment registrationFragment = new RegistrationFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, registrationFragment)

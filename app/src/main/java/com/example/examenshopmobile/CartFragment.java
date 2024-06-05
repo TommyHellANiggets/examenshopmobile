@@ -13,7 +13,6 @@ public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Инфлейт макета для фрагмента корзины
         return inflater.inflate(R.layout.fragment_cart, container, false);
     }
 }

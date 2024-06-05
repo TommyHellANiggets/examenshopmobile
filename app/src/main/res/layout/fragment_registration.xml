@@ -5,13 +5,11 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Строка с кнопкой "Вернуться на страницу авторизации" -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <!-- Кнопка "Вернуться на страницу авторизации" -->
         <Button
             android:id="@+id/button_back_to_login"
             android:layout_width="wrap_content"
@@ -19,14 +17,12 @@
             android:text="Назад в авторизацию"
             android:layout_gravity="center_vertical"/>
 
-        <!-- Пространство между кнопками -->
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <!-- Поле для ввода имени -->
     <EditText
         android:id="@+id/edit_text_first_name"
         android:layout_width="match_parent"
@@ -34,7 +30,6 @@
         android:hint="Имя"
         android:inputType="text"/>
 
-    <!-- Поле для ввода фамилии -->
     <EditText
         android:id="@+id/edit_text_last_name"
         android:layout_width="match_parent"
@@ -42,14 +37,12 @@
         android:hint="Фамилия"
         android:inputType="text"/>
 
-    <!-- Поле для ввода емейла -->
     <EditText
         android:id="@+id/edit_text_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Емейл"
         android:inputType="textEmailAddress"/>
-    <!-- Поле для ввода номера телефона -->
     <EditText
         android:id="@+id/edit_text_phone"
         android:layout_width="match_parent"
@@ -57,7 +50,6 @@
         android:hint="Номер телефона"
         android:inputType="phone"/>
 
-    <!-- Поле для ввода пароля -->
     <EditText
         android:id="@+id/edit_text_password"
         android:layout_width="match_parent"
@@ -65,7 +57,6 @@
         android:hint="Пароль"
         android:inputType="textPassword"/>
 
-    <!-- Поле для ввода подтверждения пароля -->
     <EditText
         android:id="@+id/edit_text_confirm_password"
         android:layout_width="match_parent"
@@ -73,7 +64,6 @@
         android:hint="Подтверждение пароля"
         android:inputType="textPassword"/>
 
-    <!-- Кнопка "Зарегистрироваться" -->
     <Button
         android:id="@+id/button_register"
         android:layout_width="match_parent"

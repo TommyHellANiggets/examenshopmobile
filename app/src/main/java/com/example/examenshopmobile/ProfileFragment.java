@@ -20,7 +20,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Находим элементы управления в макете
         textName = view.findViewById(R.id.text_name);
         textPhone = view.findViewById(R.id.text_phone);
         textEmail = view.findViewById(R.id.text_email);
@@ -28,18 +27,15 @@ public class ProfileFragment extends Fragment {
         buttonCart = view.findViewById(R.id.button_cart);
         buttonLogin = view.findViewById(R.id.button_login);
 
-        // Устанавливаем обработчики для кнопок (пока без логики)
         buttonMyOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Здесь будет обработка нажатия кнопки "Мои заказы"
             }
         });
 
         buttonCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Здесь будет обработка нажатия кнопки "Корзина"
             }
         });
 
@@ -55,9 +51,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // Предположим, что у вас есть объект с информацией о пользователе
-        // Заполняем текстовые поля информацией о пользователе
-        User user = getUserInfo(); // Функция, возвращающая информацию о пользователе
+        User user = getUserInfo();
         textName.setText(user.getName());
         textPhone.setText(user.getPhone());
         textEmail.setText(user.getEmail());
@@ -65,9 +59,7 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    // Метод для получения информации о пользователе (замените на свою логику)
     private User getUserInfo() {
-        // Пример данных пользователя
         String name = "Иван Иванов";
         String phone = "+7 (123) 456-7890";
         String email = "ivan@example.com";
