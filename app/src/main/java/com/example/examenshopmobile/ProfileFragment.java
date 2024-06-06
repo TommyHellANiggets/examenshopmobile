@@ -1,11 +1,15 @@
 package com.example.examenshopmobile;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,6 +18,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView textName, textPhone, textEmail;
     private Button buttonMyOrders, buttonCart, buttonLogin;
+    private SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -27,42 +32,39 @@ public class ProfileFragment extends Fragment {
         buttonCart = view.findViewById(R.id.button_cart);
         buttonLogin = view.findViewById(R.id.button_login);
 
-        buttonMyOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        buttonCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        sharedPreferences = getActivity().getSharedPreferences("current_user", Context.MODE_PRIVATE);
+        loadUserProfile();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход на страницу авторизации
+                // Переход на страницу логина
                 Fragment loginFragment = new LoginFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, loginFragment)
-                        .addToBackStack(null)
                         .commit();
             }
         });
 
-        User user = getUserInfo();
-        textName.setText(user.getName());
-        textPhone.setText(user.getPhone());
-        textEmail.setText(user.getEmail());
-
         return view;
     }
 
-    private User getUserInfo() {
-        String name = "Иван Иванов";
-        String phone = "+7 (123) 456-7890";
-        String email = "ivan@example.com";
-        return new User(name, phone, email);
+    private void loadUserProfile() {
+        int userId = sharedPreferences.getInt("user_id", -1);
+        if (userId != -1) {
+            String firstName = sharedPreferences.getString("user_first_name", "Неизвестно");
+            String lastName = sharedPreferences.getString("user_last_name", "Неизвестно");
+            String email = sharedPreferences.getString("user_email", "Неизвестно");
+            String phone = sharedPreferences.getString("user_phone", "Неизвестно");
+
+            textName.setText(firstName + " " + lastName);
+            textEmail.setText(email);
+            textPhone.setText(phone);
+        } else {
+            textName.setText("Войдите в аккаунт");
+            textEmail.setText("");
+            textPhone.setText("");
+            Toast.makeText(getContext(), "Войдите в аккаунт", Toast.LENGTH_SHORT).show();
+        }
     }
 }
