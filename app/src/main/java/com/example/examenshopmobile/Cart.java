@@ -8,4 +8,5 @@ public class Cart {
     @PrimaryKey(autoGenerate = true)
     public int id;
     public int productId;
+    public int quantity = 1;
 }

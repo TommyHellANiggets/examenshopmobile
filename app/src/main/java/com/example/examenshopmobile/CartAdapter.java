@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +43,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         Cart cartItem = cartItems.get(position);
         new LoadProductTask(holder).execute(cartItem.productId);
+        holder.productQuantity.setText(String.valueOf(cartItem.quantity)); // Set initial quantity
     }
 
     @Override
@@ -52,7 +52,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     class CartViewHolder extends RecyclerView.ViewHolder {
-        CheckBox checkBox;
         ImageView productImage;
         TextView productName;
         TextView productPrice;
@@ -61,14 +60,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         CartViewHolder(@NonNull View itemView) {
             super(itemView);
-            checkBox = itemView.findViewById(R.id.check_box);
             productImage = itemView.findViewById(R.id.product_image);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             productQuantity = itemView.findViewById(R.id.product_quantity);
             deleteButton = itemView.findViewById(R.id.delete_button);
-
-            checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> updateTotalSum());
 
             productQuantity.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -79,6 +75,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
                 @Override
                 public void afterTextChanged(Editable s) {
+                    String quantityText = s.toString();
+                    if (quantityText.isEmpty()) {
+                        productQuantity.setText("1");
+                        quantityText = "1";
+                    }
+                    int quantity = Integer.parseInt(quantityText);
+                    int position = getAdapterPosition();
+                    cartItems.get(position).quantity = quantity;
+                    new UpdateQuantityTask(cartItems.get(position).productId, quantity).execute();
                     updateTotalSum();
                 }
             });
@@ -117,6 +122,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             holder.itemView.getContext().getPackageName()))
                     .apply(requestOptions)
                     .into(holder.productImage);
+
+            updateTotalSum();
         }
     }
 
@@ -142,22 +149,43 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
     }
 
+    private class UpdateQuantityTask extends AsyncTask<Void, Void, Void> {
+        private int productId;
+        private int quantity;
+
+        UpdateQuantityTask(int productId, int quantity) {
+            this.productId = productId;
+            this.quantity = quantity;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            db.cartDao().updateQuantity(productId, quantity);
+            return null;
+        }
+    }
+
     private void updateTotalSum() {
         int totalSum = 0;
         for (int i = 0; i < cartItems.size(); i++) {
             Cart cartItem = cartItems.get(i);
             CartViewHolder holder = (CartViewHolder) recyclerView.findViewHolderForAdapterPosition(i);
 
-            if (holder != null && holder.checkBox.isChecked()) {
+            if (holder != null) {
                 String quantityText = holder.productQuantity.getText().toString();
                 if (quantityText.isEmpty()) {
-                    quantityText = "1";
+                    quantityText = "1"; // Default quantity to 1 if the input is empty
+                    holder.productQuantity.setText(quantityText); // Update the EditText
                 }
-                int quantity = Integer.parseInt(quantityText);
-                int price = Integer.parseInt(holder.productPrice.getText().toString().replaceAll("[^0-9]", ""));
-                totalSum += quantity * price;
+                try {
+                    int quantity = Integer.parseInt(quantityText);
+                    int price = Integer.parseInt(holder.productPrice.getText().toString().replaceAll("[^0-9]", ""));
+                    totalSum += quantity * price;
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        totalSumTextView.setText(String.format("Total: %d ₽", totalSum));
+        totalSumTextView.setText(String.format("Сумма: %d ₽", totalSum));
     }
 }

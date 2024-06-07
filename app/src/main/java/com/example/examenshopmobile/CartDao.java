@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface CartDao {
 
     @Query("DELETE FROM Cart WHERE productId = :productId")
     void deleteByProductId(int productId);
+
+    @Query("UPDATE Cart SET quantity = :quantity WHERE productId = :productId")
+    void updateQuantity(int productId, int quantity);
 }

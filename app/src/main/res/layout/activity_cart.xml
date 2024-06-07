@@ -5,11 +5,6 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <CheckBox
-        android:id="@+id/check_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <ImageView
         android:id="@+id/product_image"
         android:layout_width="80dp"
@@ -47,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Qty:" />
+                android:text="Количество:" />
 
             <EditText
                 android:id="@+id/product_quantity"
@@ -64,5 +59,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#FF0000"
         android:text="Удалить"
+        android:layout_marginTop="16dp"
         android:textColor="#FFFFFF" />
 </LinearLayout>
