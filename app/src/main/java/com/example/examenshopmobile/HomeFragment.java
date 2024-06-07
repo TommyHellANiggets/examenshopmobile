@@ -30,7 +30,6 @@ public class HomeFragment extends Fragment {
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                // Заголовок занимает две колонки, а карточки по одной
                 return position == 0 ? 2 : 1;
             }
         });

@@ -53,13 +53,12 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
             headerHolder.sortButton.setOnClickListener(v -> {
-                // Реализуйте логику сортировки
             });
         } else if (holder instanceof ProductViewHolder) {
-            Product product = productList.get(position - 1); // Смещение на один из-за заголовка
+            Product product = productList.get(position - 1);
             ProductViewHolder productHolder = (ProductViewHolder) holder;
             productHolder.productName.setText(product.name);
-            productHolder.productPrice.setText(String.format("%d руб.", product.price));
+            productHolder.productPrice.setText(String.format("%d ₽", product.price));
 
             RequestOptions requestOptions = new RequestOptions()
                     .error(R.drawable.default_image);
@@ -78,7 +77,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return productList.size() + 1; // Добавляем 1 для заголовка
+        return productList.size() + 1;
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {

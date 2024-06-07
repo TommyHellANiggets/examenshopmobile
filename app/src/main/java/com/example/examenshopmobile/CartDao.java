@@ -1,6 +1,7 @@
 package com.example.examenshopmobile;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -15,5 +16,5 @@ public interface CartDao {
     List<Cart> getAllCartItems();
 
     @Query("DELETE FROM Cart WHERE productId = :productId")
-    void removeFromCart(int productId);
+    void deleteByProductId(int productId);
 }

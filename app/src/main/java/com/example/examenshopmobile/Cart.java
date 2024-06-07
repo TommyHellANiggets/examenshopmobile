@@ -7,6 +7,5 @@ import androidx.room.PrimaryKey;
 public class Cart {
     @PrimaryKey(autoGenerate = true)
     public int id;
-
     public int productId;
 }

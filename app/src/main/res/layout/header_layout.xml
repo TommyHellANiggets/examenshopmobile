@@ -26,4 +26,6 @@
         android:drawableLeft="@drawable/ic_sort_icon"
         android:drawablePadding="8dp"
         android:text="Сортировать по:" />
+
+
 </LinearLayout>
