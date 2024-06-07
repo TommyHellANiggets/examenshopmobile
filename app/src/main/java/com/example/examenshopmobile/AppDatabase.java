@@ -5,13 +5,15 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Product.class, Cart.class}, version = 8)
+@Database(entities = {Product.class, Cart.class, Order.class, OrderItem.class}, version = 15)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase instance;
 
     public abstract ProductDao productDao();
     public abstract CartDao cartDao();
+    public abstract OrderDao orderDao();
+    public abstract OrderItemDao orderItemDao();
 
     public static synchronized AppDatabase getInstance(Context context) {
         if (instance == null) {

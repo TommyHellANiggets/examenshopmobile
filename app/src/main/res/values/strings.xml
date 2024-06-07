@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">examenshopmobile</string>
+    <string-array name="payment_methods">
+        <item>Наличными при получение</item>
+        <item>Кредитной картой при получение</item>
+        <item>Банковский перевод при получение</item>
+    </string-array>
+
 </resources>

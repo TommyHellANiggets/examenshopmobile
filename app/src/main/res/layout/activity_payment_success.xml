@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="Ваш заказ успешно сформирован!"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="50dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/animated_gif_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="259dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/order" />
+
+    <Button
+        android:id="@+id/back_to_home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ButtonStyle"
+
+        android:text="Вернуться на главную"/>
+</LinearLayout>

@@ -35,10 +35,33 @@ public class ProfileFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences("current_user", Context.MODE_PRIVATE);
         loadUserProfile();
 
+        buttonCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Переход во фрагмент корзины
+                Fragment cartFragment = new CartFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, cartFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        buttonMyOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Переход во фрагмент моих заказов
+                Fragment myOrdersFragment = new MyOrdersFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, myOrdersFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход на страницу логина
                 Fragment loginFragment = new LoginFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, loginFragment)

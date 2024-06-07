@@ -13,6 +13,7 @@
         android:theme="@style/Base.Theme.Examenshopmobile"
         tools:targetApi="31">
 
+        <activity android:name=".PaymentSuccessActivity" />
         <activity android:name=".CheckoutActivity" />
 
         <activity

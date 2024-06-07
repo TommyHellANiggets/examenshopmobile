@@ -7,7 +7,18 @@
     android:orientation="vertical"
     tools:context=".CartFragment">
 
-    <!-- RecyclerView для товаров в корзине -->
+    <TextView
+        android:id="@+id/cart_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:paddingBottom="16dp"
+        android:text="Корзина"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_cart"
         android:layout_width="match_parent"
@@ -21,8 +32,9 @@
         android:layout_gravity="end"
         android:padding="16dp"
         android:text="Итого: 0 руб."
+        android:textColor="#033333"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/checkout_button"

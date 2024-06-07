@@ -14,4 +14,7 @@
     <item name="button_authorization" type="id" />
     <item name="edit_text_firstname" type="id" />
     <item name="empty_cart_message" type="id" />
+    <item name="text_order_amount" type="id" />
+    <item name="text_order_date" type="id" />
+    <item name="text_order_number" type="id" />
 </resources>
