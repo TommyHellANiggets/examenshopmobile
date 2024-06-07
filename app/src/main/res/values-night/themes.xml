@@ -1,4 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Examenshopmobile" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Examenshopmobile" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primaryColorDark</item>
+        <item name="android:statusBarColor">@color/primaryColorDark</item>
+        <item name="android:navigationBarColor">@color/primaryColorDark</item>
+        <item name="android:colorBackground">@color/backgroundColorDark</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="buttonStyle">@style/ButtonStyleDark</item>
     </style>
+
+    <style name="ButtonStyleDark" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/rounded_button</item>
+        <item name="android:textColor">@color/buttonTextColorDark</item>
+    </style>
+
+
+    <style name="BottomNavigation.Dark" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/dark_blurred_color</item>
+    </style>
+
 </resources>

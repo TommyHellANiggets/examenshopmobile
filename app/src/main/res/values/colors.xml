@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="purple_700">#FF5722</color>
-    <color name="teal_200">#FFFFFFFF</color>
-    <color name="teal_700">#FFFFFFFF</color>
-    <color name="coloros">#FF5722</color>
-    <color name="myPrimaryColor">#FF5722</color>
-    <color name="myPrimaryDarkColor">#3700B3</color>
-    <color name="myAccentColor">#03DAC5</color>
-    <color name="myTextColor">#333333</color>
-    <color name="myBackgroundColor">#F5F5F5</color>
-    <color name="myStatusBarColor">#3700B3</color>
-    <color name="myNavigationBarColor">#FF3D00</color>
-    <color name="myButtonBackgroundColor">#FF2222</color>
-    <color name="myButtonTextColor">#FFFFFF</color>
+    <color name="primaryColor">#1DB954</color>
+    <color name="textColor">#191414</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="buttonColor">#1DB954</color>
+    <color name="light_blurred_color">#30FFFFFF</color>
+    <color name="buttonTextColor">#FFFFFF</color>
+
+
+    <color name="primaryColorDark">#1DB954</color>
+    <color name="textColorDark">#FFFFFF</color>
+    <color name="backgroundColorDark">#333</color>
+    <color name="buttonColorDark">#1DB954</color>
+    <color name="buttonTextColorDark">#FFFFFF</color>
+    <color name="dark_blurred_color">#000000</color>
+
 </resources>

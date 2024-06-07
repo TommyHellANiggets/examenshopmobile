@@ -1,20 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Examenshopmobile" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView</item>
-        <item name="android:statusBarColor">@color/myStatusBarColor</item>
-        <item name="android:navigationBarColor">@color/myNavigationBarColor</item>
-        <item name="colorPrimary">@color/myPrimaryColor</item>
-        <item name="colorPrimaryDark">@color/myPrimaryDarkColor</item>
-        <item name="colorAccent">@color/myAccentColor</item>
-        <item name="android:textColor">@color/myTextColor</item>
-        <item name="android:background">@color/myBackgroundColor</item>
-        <item name="android:buttonStyle">@style/MyButtonStyle</item>
+    <style name="Base.Theme.Examenshopmobile" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="android:statusBarColor">@color/primaryColor</item>
+        <item name="android:navigationBarColor">@color/primaryColor</item>
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
-    <style name="Theme.Examenshopmobile" parent="Base.Theme.Examenshopmobile" />
-
-    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="android:background">@color/myButtonBackgroundColor</item>
-        <item name="android:textColor">@color/myButtonTextColor</item>
+    <style name="ButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/rounded_button</item> <!-- Файл формы кнопки -->
+        <item name="android:textColor">@color/buttonTextColor</item> <!-- Цвет текста кнопок -->
     </style>
+
+
+    <style name="BottomNavigation.Light" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/light_blurred_color</item>
+    </style>
+
 </resources>

@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background" />
+        android:src="@drawable/ic_launcher_background"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/product_name"
@@ -19,7 +20,8 @@
         android:paddingTop="4dp"
         android:text="Product Name"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/product_price"
@@ -28,11 +30,15 @@
         android:layout_gravity="end"
         android:text="Price"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
 
     <Button
         android:id="@+id/add_to_cart_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="В корзину" />
+        android:layout_width="189dp"
+        android:layout_height="38dp"
+        android:text="В корзину"
+        style="@style/ButtonStyle"
+        android:layout_marginBottom="12dp"/>
+
 </LinearLayout>

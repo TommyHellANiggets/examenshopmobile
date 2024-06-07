@@ -2,7 +2,6 @@ package com.example.examenshopmobile;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,12 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final int VIEW_TYPE_HEADER = 0;
+    private static final int VIEW_TYPE_ITEM = 1;
+
     private List<Product> productList;
     private Context context;
-    private static final String TAG = "ProductAdapter";
     private AppDatabase db;
 
     public ProductAdapter(Context context, List<Product> productList, AppDatabase db) {
@@ -30,50 +31,63 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         this.db = db;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position == 0 ? VIEW_TYPE_HEADER : VIEW_TYPE_ITEM;
+    }
+
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
-        return new ProductViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (viewType == VIEW_TYPE_HEADER) {
+            View view = LayoutInflater.from(context).inflate(R.layout.header_layout, parent, false);
+            return new HeaderViewHolder(view);
+        } else {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_product, parent, false);
+            return new ProductViewHolder(view);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = productList.get(position);
-        holder.productName.setText(product.name);
-        holder.productPrice.setText(String.format("%d руб.", product.price));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof HeaderViewHolder) {
+            HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
+            headerHolder.sortButton.setOnClickListener(v -> {
+                // Реализуйте логику сортировки
+            });
+        } else if (holder instanceof ProductViewHolder) {
+            Product product = productList.get(position - 1); // Смещение на один из-за заголовка
+            ProductViewHolder productHolder = (ProductViewHolder) holder;
+            productHolder.productName.setText(product.name);
+            productHolder.productPrice.setText(String.format("%d руб.", product.price));
 
-        // Логирование
-        Log.d(TAG, "Product name: " + product.name);
-        Log.d(TAG, "Image path: " + product.imagePath);
+            RequestOptions requestOptions = new RequestOptions()
+                    .error(R.drawable.default_image);
 
-        // Получаем идентификатор ресурса изображения по имени файла без расширения
-        String imageName = product.imagePath.substring(0, product.imagePath.lastIndexOf('.'));
-        int imageResource = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+            Glide.with(context)
+                    .load(context.getResources().getIdentifier(
+                            product.imagePath.substring(0, product.imagePath.lastIndexOf('.')),
+                            "drawable",
+                            context.getPackageName()))
+                    .apply(requestOptions)
+                    .into(productHolder.productImage);
 
-        if (imageResource == 0) {
-            Log.d(TAG, "Image resource not found for " + product.imagePath);
-        } else {
-            Log.d(TAG, "Image resource found: " + imageResource);
+            productHolder.addToCartButton.setOnClickListener(v -> new AddToCartTask(db, product.id).execute());
         }
-
-        RequestOptions requestOptions = new RequestOptions()
-                .error(R.drawable.default_image); // Установите изображение по умолчанию в случае ошибки
-
-        Glide.with(context)
-                .load(imageResource != 0 ? imageResource : R.drawable.default_image)
-                .apply(requestOptions)
-                .into(holder.productImage);
-
-        holder.addToCartButton.setOnClickListener(v -> {
-            // Добавление в корзину
-            new AddToCartTask(db, product.id).execute();
-        });
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return productList.size() + 1; // Добавляем 1 для заголовка
+    }
+
+    public static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        Button sortButton;
+
+        public HeaderViewHolder(@NonNull View itemView) {
+            super(itemView);
+            sortButton = itemView.findViewById(R.id.sort_button);
+        }
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
