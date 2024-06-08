@@ -38,7 +38,6 @@ public class ProfileFragment extends Fragment {
         buttonCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход во фрагмент корзины
                 Fragment cartFragment = new CartFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, cartFragment)
@@ -50,7 +49,6 @@ public class ProfileFragment extends Fragment {
         buttonMyOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Переход во фрагмент моих заказов
                 Fragment myOrdersFragment = new MyOrdersFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, myOrdersFragment)

@@ -20,7 +20,9 @@ public interface OrderDao {
     @Query("SELECT * FROM `Order` WHERE orderId = :orderId")
     Order getOrderById(int orderId);
 
-    
+    @Query("SELECT COUNT(*) FROM OrderItem WHERE orderId = :orderId")
+    int getItemCountByOrderId(int orderId);
+
 
 
 }

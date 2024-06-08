@@ -14,5 +14,6 @@ public interface OrderItemDao {
     @Query("SELECT * FROM OrderItem WHERE orderId = :orderId")
     List<OrderItem> getOrderItemsByOrderId(int orderId);
 
-
+    @Query("SELECT COUNT(*) FROM OrderItem WHERE orderId = :orderId")
+    int getItemCountByOrderId(int orderId);
 }
