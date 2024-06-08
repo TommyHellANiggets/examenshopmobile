@@ -5,5 +5,10 @@
         <item>Кредитной картой при получение</item>
         <item>Банковский перевод при получение</item>
     </string-array>
+    <string-array name="sort_options">
+        <item>По умолчанию</item>
+        <item>Цена: по возрастанию</item>
+        <item>Цена: по убыванию</item>
+    </string-array>
 
 </resources>

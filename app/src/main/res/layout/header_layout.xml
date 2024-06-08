@@ -20,6 +20,14 @@
         android:layout_alignParentEnd="true"
         android:drawableLeft="@drawable/ic_sort_icon"
         android:drawablePadding="8dp"
-        android:text="Сортировать по:" />
+        android:text="Сортировать по:"
+        android:onClick="onSortButtonClick" />
+
+    <Spinner
+        android:id="@+id/sort_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 
 </RelativeLayout>

@@ -1,52 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="4dp">
+    android:background="#E6E6E6"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/orderNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Number"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/orderDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order Date"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/totalAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Amount"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/itemCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Items Count"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/paymentMethodTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Method"
+        android:textSize="14sp" />
+
+    <!-- HorizontalScrollView для отображения изображений товаров -->
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingTop="8dp">
 
-        <TextView
-            android:id="@+id/orderNumberTextView"
+        <LinearLayout
+            android:id="@+id/imagesContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order Number"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
 
-        <TextView
-            android:id="@+id/orderDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order Date"
-            android:textSize="14sp"/>
-
-        <TextView
-            android:id="@+id/totalAmountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total Amount"
-            android:textSize="14sp"/>
-
-        <TextView
-            android:id="@+id/itemCountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item Count"
-            android:textSize="14sp"/>
-
-        <TextView
-            android:id="@+id/paymentMethodTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Payment Method"
-            android:textSize="14sp"/>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+</LinearLayout>

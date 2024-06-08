@@ -14,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.examenshopmobile.AppDatabase;
+import com.example.examenshopmobile.Cart;
+import com.example.examenshopmobile.Product;
+import com.example.examenshopmobile.R;
 
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final int VIEW_TYPE_HEADER = 0;
-    private static final int VIEW_TYPE_ITEM = 1;
-
     private List<Product> productList;
     private Context context;
     private AppDatabase db;
@@ -31,15 +32,10 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.db = db;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position == 0 ? VIEW_TYPE_HEADER : VIEW_TYPE_ITEM;
-    }
-
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == VIEW_TYPE_HEADER) {
+        if (viewType == 0) {
             View view = LayoutInflater.from(context).inflate(R.layout.header_layout, parent, false);
             return new HeaderViewHolder(view);
         } else {
@@ -53,6 +49,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if (holder instanceof HeaderViewHolder) {
             HeaderViewHolder headerHolder = (HeaderViewHolder) holder;
             headerHolder.sortButton.setOnClickListener(v -> {
+                // Handle sorting button click if needed
             });
         } else if (holder instanceof ProductViewHolder) {
             Product product = productList.get(position - 1);
@@ -78,6 +75,11 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemCount() {
         return productList.size() + 1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position == 0 ? 0 : 1;
     }
 
     public static class HeaderViewHolder extends RecyclerView.ViewHolder {
